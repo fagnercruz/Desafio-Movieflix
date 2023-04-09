@@ -2,7 +2,8 @@
     min-height: 70px;
     width: 100vw;
     padding-left: 18px;
-    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0.6));
+    /* Para um background com transparência linear
+    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0.6)); */
     
 }
 
