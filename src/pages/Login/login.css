@@ -1,0 +1,105 @@
+.efeito-glass {
+    background-color: rgba(52,52,52,0.7);
+    backdrop-filter: blur(2px);
+}
+
+.bordas-arredondadas {
+    border: 1px solid rgba(59, 59, 59, 0.5);
+    border-radius: 20px;
+}
+
+.login-container {
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+   
+}
+
+.login-card {
+    width: 298px;
+    height: 400px;
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-card h3 {
+    margin-bottom: 40px;
+    font-weight: 700;
+    font-size: 2.5rem;
+
+}
+
+.login-card input {
+    margin-bottom: 20px;
+}
+
+.login-card input:nth-last-child(2) {
+    margin-bottom: 54px;
+}
+
+.login-card button {
+    width: 100%;
+}
+
+.login-card button:hover {
+    color: red;
+}
+
+.login-banner {
+   display: none;
+   width: 397px;
+   height: 460px;
+}
+
+.login-banner h2 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.login-banner p {
+    margin-bottom: 50px;
+    font-size: 22px;
+    font-weight: 100;
+    width: 320px;
+}
+.bannerImg-container {
+    height: 265px;
+}
+
+@media (min-width: 1200px){
+    .login-banner {
+        display: unset;
+     }
+
+     .login-card {
+        width: 479px;
+        height: 573px;
+        padding: 0 50px;
+    }
+
+    .login-card h3 {
+        margin-top: 74px;
+        margin-bottom: 40px;
+        font-weight: 100;
+        font-size: 48px;
+    
+    }
+    .campos-form {
+        width: 100%;
+    }
+    .campos-form input {
+        height: 47px;
+        margin-bottom: 30px;
+    }
+
+    .campos-form button {
+        margin-top: 20px;
+        height: 65px;
+        font-size: 20px;
+    }
+}

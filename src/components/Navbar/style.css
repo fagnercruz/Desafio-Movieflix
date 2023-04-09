@@ -1,0 +1,36 @@
+.main-nav{
+    min-height: 70px;
+    width: 100vw;
+    padding-left: 18px;
+    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0.6));
+    
+}
+
+.navLogo, .navLogo:hover {
+    color: #f80808;
+    text-decoration: none;
+}
+
+.navLogo h4 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.main-menu{
+    display: flex;
+    font-size: 18px;
+    width: 380px;
+    justify-content: space-between;
+}
+.main-menu a {
+    color: rgba(255, 255, 255, .5);
+}
+
+.main-menu a:hover {
+    color: #fff;
+}
+
+.main-menu a.active {
+    color: #fff;
+    font-weight: 700;
+}

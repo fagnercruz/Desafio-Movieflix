@@ -1,0 +1,12 @@
+.reviewList-Container {
+    background-color: #6C6C6C;
+    padding: 10px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+
+
