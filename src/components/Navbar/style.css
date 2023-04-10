@@ -1,9 +1,9 @@
 .main-nav{
     min-height: 70px;
     width: 100vw;
-    padding-left: 18px;
-    /* Para um background com transparência linear
-    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0.6)); */
+    padding: 0 25px;
+    /* Para um background com transparência linear*/
+    background-image: linear-gradient(to right, rgba(252,211,27,1), rgba(13,17,23,1));
     
 }
 

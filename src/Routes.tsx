@@ -2,8 +2,7 @@ import Navbar from "components/Navbar";
 import Login from "pages/Login";
 import Movies from "pages/Movies";
 import MoviesDetails from "pages/MoviesDetails";
-import { BrowserRouter, Route, Router, Switch } from "react-router-dom";
-import history from "utils/history";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 const Routes = () => {
   return (
