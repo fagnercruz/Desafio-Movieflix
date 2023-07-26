@@ -1,7 +1,7 @@
 .main-nav{
     min-height: 70px;
     width: 100vw;
-    padding: 0 25px;
+    padding: 0px;
     /* Para um background com transparência linear*/
     background-image: linear-gradient(to right, rgba(252,211,27,1), rgba(13,17,23,1));
     

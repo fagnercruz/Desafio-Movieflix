@@ -12,14 +12,18 @@
     margin-bottom: 30px;
 }
 
+
 @media (min-width: 1200px){
+    
     .movies-container {
-        padding: 40px ;
+        padding: 40px;
     }
+   
     .movies-container h2 {
         font-size: 48px;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
     }
+    
 
     .movies-container p {
         font-size: 24px;
