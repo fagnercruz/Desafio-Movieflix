@@ -33,6 +33,10 @@
 
 }
 
+.login-card form {
+    width: 90%;
+}
+
 .login-card input {
     margin-bottom: 20px;
 }
