@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import "./movies.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { AxiosRequestConfig } from "axios";
 import { BASE_URL, requestBackend } from "utils/requests";
 
 const Movies = () => {
-
-  const [granted, setGranted] = useState(false);
 
   // Essa página tem partes que serão ou não exibidas por determinados perfis e só tem acesso pessoal autenticado
   useEffect(() => {
@@ -19,10 +17,10 @@ const Movies = () => {
 
     requestBackend(params)
     .then((response) => {
-      setGranted(true);
+      
     })
     .catch(error => {
-      setGranted(false);
+      
     })
 
   },[]);
@@ -30,6 +28,7 @@ const Movies = () => {
   return (
     <>
       <div className="movies-container">
+
         <h2>Tela listagem de filmes</h2>
         <Link to="/movies/1" style={{textDecoration: 'none', color: 'unset'}}>
           <p>Acessar /movies/1</p>

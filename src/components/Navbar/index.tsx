@@ -1,5 +1,6 @@
 import LogoutBtn from "components/LogoutBtn";
 import "./style.css";
+import { isAuthenticated } from "utils/requests";
 
 const Navbar = () => {
   return (
@@ -10,7 +11,7 @@ const Navbar = () => {
         </a>
       </div>
       <div className="logout-area-container">
-        <LogoutBtn/>
+        {isAuthenticated() && <LogoutBtn/>}
       </div>
     </nav>
   );

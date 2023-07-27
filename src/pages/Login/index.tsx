@@ -2,8 +2,7 @@ import "./login.css";
 import { ReactComponent as HeroImg } from "../../assets/images/Desenho.svg";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { AxiosRequestConfig } from "axios";
-import { BASE_URL, getAuthData, requestBackendLogin, saveAuthData } from "utils/requests";
+import { getAuthData, isAuthenticated, requestBackendLogin, saveAuthData } from "utils/requests";
 import { useHistory } from "react-router-dom";
 
 type FormData = {
@@ -36,7 +35,9 @@ const Login = () => {
 
   return (
     <>
+      <h6>{isAuthenticated() ? "Logado" : "Não logado"}</h6>
       <div className="login-container">
+      
         <div className="login-banner">
           <h2>Avalie Filmes</h2>
           <p>Diga o que você achou do seu filme favorito</p>

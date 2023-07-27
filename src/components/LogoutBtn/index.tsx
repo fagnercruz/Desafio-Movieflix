@@ -1,8 +1,11 @@
+
 import "./styles.css";
 
 const LogoutBtn = () => {
   return (
-    <button className="btn btn-primary btn-logout">SAIR</button>
+    
+     <button className="btn btn-primary btn-logout">SAIR</button>
+   
   );
 };
 

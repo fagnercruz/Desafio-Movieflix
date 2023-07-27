@@ -1,6 +1,7 @@
 import QueryString from "qs";
 import axios, { AxiosRequestConfig } from "axios";
 import history from "./history";
+import jwtDecode from "jwt-decode";
 
 export const BASE_URL =
   process.env.REACT_APP_BACKEND_URL ??
@@ -23,6 +24,15 @@ type LoginResponse = {
   userName:string;
   userId:string;
 }
+
+type TokenData = {
+	exp: number;
+	user_name: string;
+	authorities: RoleTypes[];
+}
+
+// declaração de um enum em JS
+type RoleTypes = "ROLE_VISITOR" | "ROLE_ADMIN";
 
 //----------- função que prepara o header para ser enviado ao backend para autenticação
 export const requestBackendLogin = (login: LoginData) => {
@@ -63,26 +73,37 @@ export const getAuthData = () => {
   return JSON.parse(str) as LoginResponse;
 }
 
+export const getTokenData = () : TokenData | undefined => {
+  try{
+    return jwtDecode(getAuthData().access_token);
+  } catch (error) {
+    return undefined;
+  }
+};
+
+export const isAuthenticated = () : boolean => {
+  const tokenData = getTokenData();
+  return (tokenData && (tokenData.exp * 1000) > Date.now()) ? true : false;
+};
+
 
 // INTERCEPTORS
 
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
-  // Do something before request is sent
+  // 
   return config;
 }, function (error) {
-  // Do something with request error
+  // 
   return Promise.reject(error);
 });
 
 // Add a response interceptor
 axios.interceptors.response.use(function (response) {
-  // Any status code that lie within the range of 2xx cause this function to trigger
-  // Do something with response data
+  //
   return response;
 }, function (error) {
-  // Any status codes that falls outside the range of 2xx cause this function to trigger
-  // Do something with response error
+  // Se não logado (401) ou não autorizado (403) redireciona para tela de login
   if(error.response.status === 401 || error.response.status === 403){
     console.log("Usuário não tem permissão para acessar essa página");
     history.push("/");
