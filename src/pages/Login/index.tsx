@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { AxiosRequestConfig } from "axios";
 import { BASE_URL, getAuthData, requestBackendLogin, saveAuthData } from "utils/requests";
+import { useHistory } from "react-router-dom";
 
 type FormData = {
   username: string;
@@ -13,6 +14,7 @@ type FormData = {
 const Login = () => {
   const {register, handleSubmit,formState: { errors }} = useForm<FormData>();
   const [hasError, setHasError] = useState(false);
+  const history = useHistory();
 
   const onSubmit = (formData: FormData) => {
     requestBackendLogin(formData)
@@ -22,6 +24,7 @@ const Login = () => {
         setHasError(false);
         console.log("SUCESSO", response);
         console.log("Token", token);
+        history.push("/movies");
       })
       .catch((erro) => {
         setHasError(true);
