@@ -11,6 +11,7 @@ type FormData = {
 };
 
 const Login = () => {
+  
   const {register, handleSubmit,formState: { errors }} = useForm<FormData>();
   const [hasError, setHasError] = useState(false);
   const history = useHistory();
@@ -31,7 +32,10 @@ const Login = () => {
       });
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+
+
+  }, []);
 
   return (
     <>
