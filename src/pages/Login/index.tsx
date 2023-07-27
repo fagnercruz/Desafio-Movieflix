@@ -2,7 +2,7 @@ import "./login.css";
 import { ReactComponent as HeroImg } from "../../assets/images/Desenho.svg";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { getAuthData, isAuthenticated, requestBackendLogin, saveAuthData } from "utils/requests";
+import { getAuthData, requestBackendLogin, saveAuthData } from "utils/requests";
 import { useHistory } from "react-router-dom";
 
 type FormData = {
@@ -39,7 +39,6 @@ const Login = () => {
 
   return (
     <>
-      <h6>{isAuthenticated() ? "Logado" : "Não logado"}</h6>
       <div className="login-container">
       
         <div className="login-banner">
