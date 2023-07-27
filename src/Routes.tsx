@@ -2,12 +2,13 @@ import Navbar from "components/Navbar";
 import Login from "pages/Login";
 import Movies from "pages/Movies";
 import MoviesDetails from "pages/MoviesDetails";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
+import history from "utils/history";
 
 const Routes = () => {
   return (
     <>
-      <BrowserRouter>
+      <Router history={history}>
         <Navbar />
 
         <Switch>
@@ -23,7 +24,7 @@ const Routes = () => {
             <MoviesDetails />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     </>
   );
 };

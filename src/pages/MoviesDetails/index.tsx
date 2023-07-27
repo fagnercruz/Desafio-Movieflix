@@ -14,7 +14,7 @@ const MoviesDetails = () => {
 
     const params : AxiosRequestConfig = {
       baseURL: BASE_URL,
-      url:'/movies',
+      url:'/movies/1',
       withCredentials: true
     }
 

@@ -1,5 +1,6 @@
 import QueryString from "qs";
 import axios, { AxiosRequestConfig } from "axios";
+import history from "./history";
 
 export const BASE_URL =
   process.env.REACT_APP_BACKEND_URL ??
@@ -61,3 +62,30 @@ export const getAuthData = () => {
   const str = localStorage.getItem("authData") ?? "{}";
   return JSON.parse(str) as LoginResponse;
 }
+
+
+// INTERCEPTORS
+
+// Add a request interceptor
+axios.interceptors.request.use(function (config) {
+  // Do something before request is sent
+  return config;
+}, function (error) {
+  // Do something with request error
+  return Promise.reject(error);
+});
+
+// Add a response interceptor
+axios.interceptors.response.use(function (response) {
+  // Any status code that lie within the range of 2xx cause this function to trigger
+  // Do something with response data
+  return response;
+}, function (error) {
+  // Any status codes that falls outside the range of 2xx cause this function to trigger
+  // Do something with response error
+  if(error.response.status === 401 || error.response.status === 403){
+    console.log("Usuário não tem permissão para acessar essa página");
+    history.push("/");
+  }
+  return Promise.reject(error);
+});

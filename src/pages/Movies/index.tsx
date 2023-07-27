@@ -1,7 +1,32 @@
 import { Link } from "react-router-dom";
 import "./movies.css";
+import { useEffect, useState } from "react";
+import { AxiosRequestConfig } from "axios";
+import { BASE_URL, requestBackend } from "utils/requests";
 
 const Movies = () => {
+
+  const [granted, setGranted] = useState(false);
+
+  // Essa página tem partes que serão ou não exibidas por determinados perfis e só tem acesso pessoal autenticado
+  useEffect(() => {
+
+    const params : AxiosRequestConfig = {
+      baseURL: BASE_URL,
+      url:'/movies',
+      withCredentials: true
+    }
+
+    requestBackend(params)
+    .then((response) => {
+      setGranted(true);
+    })
+    .catch(error => {
+      setGranted(false);
+    })
+
+  },[]);
+
   return (
     <>
       <div className="movies-container">
