@@ -3,7 +3,7 @@ import { ReactComponent as HeroImg } from "../../assets/images/Desenho.svg";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { AxiosRequestConfig } from "axios";
-import { BASE_URL, requestBackendLogin } from "utils/requests";
+import { BASE_URL, getAuthData, requestBackendLogin, saveAuthData } from "utils/requests";
 
 type FormData = {
   username: string;
@@ -17,8 +17,11 @@ const Login = () => {
   const onSubmit = (formData: FormData) => {
     requestBackendLogin(formData)
       .then((response) => {
+        saveAuthData(response.data);
+        const token = getAuthData().access_token;
         setHasError(false);
         console.log("SUCESSO", response);
+        console.log("Token", token);
       })
       .catch((erro) => {
         setHasError(true);
