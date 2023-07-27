@@ -1,5 +1,5 @@
 import QueryString from "qs";
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 export const BASE_URL =
   process.env.REACT_APP_BACKEND_URL ??
@@ -42,6 +42,15 @@ export const requestBackendLogin = (login: LoginData) => {
     data,
     headers,
   });
+};
+
+export const requestBackend = (config: AxiosRequestConfig) => {
+  const headers = config.withCredentials ? {
+    ...config.headers,
+    Authorization: "Bearer " + getAuthData().access_token,
+  } : config.headers;
+
+  return axios({...config, headers});
 };
 
 export const saveAuthData = (obj:LoginResponse) => {
