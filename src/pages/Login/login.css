@@ -37,13 +37,10 @@
     width: 90%;
 }
 
-.login-card input {
-    margin-bottom: 20px;
-}
 
-.login-card input:nth-last-child(2) {
+/*.login-card input:nth-last-child(2) {
     margin-bottom: 54px;
-}
+}*/
 
 .login-card button {
     width: 100%;
@@ -98,7 +95,6 @@
     }
     .campos-form input {
         height: 47px;
-        margin-bottom: 30px;
     }
 
     .campos-form button {

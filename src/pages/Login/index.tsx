@@ -11,7 +11,7 @@ type FormData = {
 };
 
 const Login = () => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const {register, handleSubmit,formState: { errors }} = useForm<FormData>();
   const [hasError, setHasError] = useState(false);
 
   const onSubmit = (formData: FormData) => {
@@ -49,23 +49,31 @@ const Login = () => {
               </div>
             )}
 
-            <div className="campos-form">
+            <div className="mb-4">
               <input
-                {...register("username")}
+                {...register("username", {
+                  required: "Campo obrigatório"
+                })}
                 type="text"
                 id="email"
                 name="username"
                 className="form-control"
               />
+              <div className="invalid-feedback d-block">{errors.username?.message}</div>
+            </div>
+            <div className="campos-form">
               <input
-                {...register("password")}
+                {...register("password", {
+                  required: "Senha obrigatória"
+                })}
                 type="password"
                 id="senha"
                 name="password"
                 className="form-control"
               />
-              <button className="btn btn-primary">FAZER LOGIN</button>
+              <div className="invalid-feedback d-block">{errors.password?.message}</div>
             </div>
+            <button className="btn btn-primary">FAZER LOGIN</button>
           </form>
         </div>
       </div>
