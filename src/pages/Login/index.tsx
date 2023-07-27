@@ -52,12 +52,16 @@ const Login = () => {
             <div className="mb-4">
               <input
                 {...register("username", {
-                  required: "Campo obrigatório"
+                  required: "Campo obrigatório",
+                  pattern: {
+                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                    message: "email inválido"
+                  }
                 })}
                 type="text"
                 id="email"
                 name="username"
-                className="form-control"
+                className={`form-control ${errors.username ? 'is-invalid' : ''}`}
               />
               <div className="invalid-feedback d-block">{errors.username?.message}</div>
             </div>
@@ -69,7 +73,7 @@ const Login = () => {
                 type="password"
                 id="senha"
                 name="password"
-                className="form-control"
+                className={`form-control ${errors.password ? 'is-invalid':''}`}
               />
               <div className="invalid-feedback d-block">{errors.password?.message}</div>
             </div>
