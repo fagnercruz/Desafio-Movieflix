@@ -1,36 +1,37 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import "./style.css";
-import { TokenData, getTokenData, isAuthenticated, removeAuthData } from "utils/requests";
+import {  getTokenData, isAuthenticated, removeAuthData } from "utils/requests";
 import {getSaudacaoByHour} from "utils/dataHora"
 import history from "utils/history";
+import { AuthContext } from "AuthGlobalContext";
 
-type DadosAutenticacao = {
-  autenticado:boolean;
-  tokenData?:TokenData;
-}
+
 
 const Navbar = () => {
 
-  const [autenticacao, setAutenticacao] = useState<DadosAutenticacao>({autenticado:false})
+  // useState para alterar o estado do contexto global (Context API)
+  const {authContextData, setAuthContextData} = useContext(AuthContext);
+
+
 
   useEffect(() => {
 
     if(isAuthenticated()){
-      setAutenticacao({
+      setAuthContextData({
        autenticado:true,
        tokenData: getTokenData()
       })
     }
     else {
-      setAutenticacao({autenticado:false})
+      setAuthContextData({autenticado:false})
     }
 
-  },[])
+  },[setAuthContextData])
 
   const handleLogoutClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     removeAuthData();
-    setAutenticacao({
+    setAuthContextData({
       autenticado:false
     });
     history.replace("/")
@@ -44,9 +45,9 @@ const Navbar = () => {
         </a>
       </div>
       <div className="logout-area-container">
-        {autenticacao.autenticado ? 
+        {authContextData.autenticado ? 
           <>
-            <p>{getSaudacaoByHour()} {autenticacao.tokenData?.user_name}</p>
+            <p>{getSaudacaoByHour()} {authContextData.tokenData?.user_name}</p>
             <p>[<a href="#logout" onClick={handleLogoutClick}>LOGOUT</a>]</p>
           </>
         :

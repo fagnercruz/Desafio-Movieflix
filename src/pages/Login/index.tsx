@@ -1,9 +1,10 @@
 import "./login.css";
 import { ReactComponent as HeroImg } from "../../assets/images/Desenho.svg";
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
-import { getAuthData, requestBackendLogin, saveAuthData } from "utils/requests";
+import { useContext, useEffect, useState } from "react";
+import { getAuthData, getTokenData, requestBackendLogin, saveAuthData } from "utils/requests";
 import { useHistory } from "react-router-dom";
+import { AuthContext } from "AuthGlobalContext";
 
 type FormData = {
   username: string;
@@ -11,6 +12,9 @@ type FormData = {
 };
 
 const Login = () => {
+
+  // useState para alterar o estado do contexto global (Context API)
+  const {setAuthContextData} = useContext(AuthContext);
   
   const {register, handleSubmit,formState: { errors }} = useForm<FormData>();
   const [hasError, setHasError] = useState(false);
@@ -20,10 +24,11 @@ const Login = () => {
     requestBackendLogin(formData)
       .then((response) => {
         saveAuthData(response.data);
-        const token = getAuthData().access_token;
         setHasError(false);
-        console.log("SUCESSO", response);
-        console.log("Token", token);
+        setAuthContextData({
+          autenticado:true,
+          tokenData: getTokenData()
+         })
         history.push("/movies");
       })
       .catch((erro) => {
