@@ -5,7 +5,7 @@ import { isAuthenticated } from 'utils/requests';
 type Props = {
   children: React.ReactNode;
   path: string;
-  exact: boolean;
+  exact?: boolean;
 };
 
 
