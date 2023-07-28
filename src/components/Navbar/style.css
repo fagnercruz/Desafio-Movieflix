@@ -35,3 +35,15 @@
     color: #fff;
     font-weight: 700;
 }
+
+.logout-area-container {
+    width: 100%;
+    padding-right: 20px;
+    gap: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logout-area-container p {
+    margin: 0px;
+}
