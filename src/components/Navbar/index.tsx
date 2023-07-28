@@ -1,9 +1,10 @@
 import { useContext, useEffect } from "react";
 import "./style.css";
-import {  getTokenData, isAuthenticated, removeAuthData } from "utils/requests";
 import {getSaudacaoByHour} from "utils/dataHora"
 import history from "utils/history";
 import { AuthContext } from "AuthGlobalContext";
+import { getTokenData, isAuthenticated } from "utils/auth";
+import { removeAuthData } from "utils/localStorageUtils";
 
 
 

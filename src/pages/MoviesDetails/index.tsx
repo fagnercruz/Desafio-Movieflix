@@ -1,7 +1,8 @@
 import "./movies.css";
 import ReviewBoxCard from "components/ReviewBoxCard";
 import ReviewList from "components/ReviewList";
-import { hasAnyRole } from "utils/requests";
+import { hasAnyRole } from "utils/auth";
+
 
 
 const MoviesDetails = () => {
