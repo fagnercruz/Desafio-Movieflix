@@ -2,7 +2,7 @@ import "./login.css";
 import { ReactComponent as HeroImg } from "../../assets/images/Desenho.svg";
 import { useForm } from "react-hook-form";
 import { useContext, useEffect, useState } from "react";
-import { getAuthData, getTokenData, requestBackendLogin, saveAuthData } from "utils/requests";
+import { getTokenData, requestBackendLogin, saveAuthData } from "utils/requests";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "AuthGlobalContext";
 
