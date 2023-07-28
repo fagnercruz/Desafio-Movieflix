@@ -5,18 +5,20 @@ import { isAuthenticated } from 'utils/requests';
 type Props = {
   children: React.ReactNode;
   path: string;
+  exact: boolean;
 };
 
 
-const PrivateRoute = ({ children, path }: Props) => {
+const PrivateRoute = ({ children, path, exact }: Props) => {
 
 
   return (
     <Route
       path={path}
-      exact
+      exact={exact}
       render={() =>
-        isAuthenticated() ? <>{children}</> : <Redirect to="/" />
+        isAuthenticated() ? 
+          <>{children}</>  : <Redirect to="/"/>
       }
     />
   );

@@ -11,7 +11,11 @@ type FormData = {
   password: string;
 };
 
+
+
 const Login = () => {
+
+
 
   // useState para alterar o estado do contexto global (Context API)
   const {setAuthContextData} = useContext(AuthContext);

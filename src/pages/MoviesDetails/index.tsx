@@ -2,6 +2,7 @@ import "./movies.css";
 import ReviewBoxCard from "components/ReviewBoxCard";
 import ReviewList from "components/ReviewList";
 import { useEffect } from "react";
+import { hasAnyRole } from "utils/requests";
 
 
 const MoviesDetails = () => {
@@ -18,7 +19,7 @@ const MoviesDetails = () => {
             <h2>Tela detalhes do filme</h2>
             <p className="id-filme">id: 1</p>
           </div>
-          <ReviewBoxCard />
+          {hasAnyRole(["ROLE_MEMBER"]) ? <ReviewBoxCard /> : '' }
           <ReviewList />
       </div>
     </>

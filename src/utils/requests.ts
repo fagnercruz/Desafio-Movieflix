@@ -32,7 +32,7 @@ export type TokenData = {
 }
 
 // declaração de um enum em JS
-type RoleTypes = "ROLE_VISITOR" | "ROLE_ADMIN";
+type RoleTypes = "ROLE_VISITOR" | "ROLE_MEMBER";
 
 //----------- função que prepara o header para ser enviado ao backend para autenticação
 export const requestBackendLogin = (login: LoginData) => {
@@ -89,6 +89,25 @@ export const isAuthenticated = () : boolean => {
   const tokenData = getTokenData();
   return (tokenData && (tokenData.exp * 1000) > Date.now()) ? true : false;
 };
+
+export const hasAnyRole = (roles: RoleTypes[]) : boolean => {
+
+  if(roles.length === 0){
+    return true;
+  }
+
+  const tokenData = getTokenData();
+
+  if(tokenData !== undefined){
+   for(var i = 0; i < roles.length; i++){
+    if(tokenData.authorities.includes(roles[i])){
+      return true;
+    }
+   }
+  }
+
+  return false;
+}
 
 
 // INTERCEPTORS
