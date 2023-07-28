@@ -91,21 +91,20 @@ export const isAuthenticated = () : boolean => {
 };
 
 export const hasAnyRole = (roles: RoleTypes[]) : boolean => {
-
   if(roles.length === 0){
     return true;
   }
-
   const tokenData = getTokenData();
-
+  
   if(tokenData !== undefined){
-   for(var i = 0; i < roles.length; i++){
-    if(tokenData.authorities.includes(roles[i])){
-      return true;
-    }
-   }
-  }
-
+    /* Versão espartana
+    for(var i = 0; i < roles.length; i++){
+      if(tokenData.authorities.includes(roles[i])){
+        return true;
+      }
+    }*/
+    return roles.some(role => tokenData.authorities.includes(role));
+  } 
   return false;
 }
 
