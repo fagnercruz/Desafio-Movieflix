@@ -13,16 +13,15 @@ type FormData = {
   password: string;
 };
 
-
-
 const Login = () => {
-
-
-
   // useState para alterar o estado do contexto global (Context API)
-  const {setAuthContextData} = useContext(AuthContext);
-  
-  const {register, handleSubmit,formState: { errors }} = useForm<FormData>();
+  const { setAuthContextData } = useContext(AuthContext);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
   const [hasError, setHasError] = useState(false);
   const history = useHistory();
 
@@ -32,26 +31,21 @@ const Login = () => {
         saveAuthData(response.data);
         setHasError(false);
         setAuthContextData({
-          autenticado:true,
-          tokenData: getTokenData()
-         })
+          autenticado: true,
+          tokenData: getTokenData(),
+        });
         history.push("/movies");
       })
       .catch((erro) => {
         setHasError(true);
-        console.log("ERRO", erro);
       });
   };
 
-  useEffect(() => {
-
-
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
       <div className="login-container">
-      
         <div className="login-banner">
           <h2>Avalie Filmes</h2>
           <p>Diga o que você achou do seu filme favorito</p>
@@ -76,27 +70,35 @@ const Login = () => {
                   required: "Campo obrigatório",
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "email inválido"
-                  }
+                    message: "email inválido",
+                  },
                 })}
                 type="text"
                 id="email"
                 name="username"
-                className={`form-control ${errors.username ? 'is-invalid' : ''}`}
+                className={`form-control ${
+                  errors.username ? "is-invalid" : ""
+                }`}
               />
-              <div className="invalid-feedback d-block">{errors.username?.message}</div>
+              <div className="invalid-feedback d-block">
+                {errors.username?.message}
+              </div>
             </div>
             <div className="campos-form">
               <input
                 {...register("password", {
-                  required: "Senha obrigatória"
+                  required: "Senha obrigatória",
                 })}
                 type="password"
                 id="senha"
                 name="password"
-                className={`form-control ${errors.password ? 'is-invalid':''}`}
+                className={`form-control ${
+                  errors.password ? "is-invalid" : ""
+                }`}
               />
-              <div className="invalid-feedback d-block">{errors.password?.message}</div>
+              <div className="invalid-feedback d-block">
+                {errors.password?.message}
+              </div>
             </div>
             <button className="btn btn-primary">FAZER LOGIN</button>
           </form>

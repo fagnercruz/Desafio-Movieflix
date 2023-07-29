@@ -1,14 +1,19 @@
+import { Review } from "utils/typesUtils";
 import { ReactComponent as Star } from "../../assets/images/star.svg";
 import "./style.css";
 
-const ReviewItem = () => {
+type Props = {
+  review: Review;
+};
+
+const ReviewItem = ({ review }: Props) => {
   return (
     <div className="review-item">
       <div className="review-author">
-        <Star /> Pessoa
+        <Star /> {review.user.name}
       </div>
       <div className="review-content">
-        <p>Gostei muito do filme. Foi muito bom mesmo. Pena que durou pouco.</p>
+        <p>{review.text}</p>
       </div>
     </div>
   );

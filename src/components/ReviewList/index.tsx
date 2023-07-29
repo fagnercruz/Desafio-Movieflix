@@ -1,12 +1,17 @@
 import ReviewItem from "components/ReviewItem";
 import "./style.css";
+import { Review } from "utils/typesUtils";
 
-const ReviewList = () => {
+type Props = {
+  reviews: Review[];
+};
+
+const ReviewList = ({ reviews }: Props) => {
   return (
     <div className="reviewList-Container">
-      <ReviewItem />
-      <ReviewItem />
-      <ReviewItem />
+      {reviews.map((review) => {
+        return <ReviewItem review={review} />;
+      })}
     </div>
   );
 };
