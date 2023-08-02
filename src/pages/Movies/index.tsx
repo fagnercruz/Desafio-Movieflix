@@ -23,6 +23,11 @@ const Movies = () => {
       baseURL: BASE_URL,
       url: `/movies`,
       withCredentials: true,
+      params: {
+        size:8,
+        page: activePage,
+        genreId: genre?.id
+      }
     }
 
     requestBackend(config)
@@ -30,7 +35,7 @@ const Movies = () => {
         console.log(response.data);
         setMoviesResponse(response.data)
       })
-  },[]);
+  },[activePage,genre]);
 
   const handleChangeGenre = (genre: Genre) => {
     setActivePage(0)

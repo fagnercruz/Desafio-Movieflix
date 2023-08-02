@@ -1,7 +1,7 @@
 import './styles.css'
 import { useEffect, useState } from 'react'
 import { Genre } from 'utils/typesUtils'
-import { requestBackend } from 'utils/requests'
+import { BASE_URL, requestBackend } from 'utils/requests'
 import Select from 'react-select'
 
 type Props = {
@@ -16,7 +16,11 @@ const Filter = ({ genre, handleChangeGenre }: Props) => {
   useEffect(() => {
     setIsLoadingGenres(true)
 
-    requestBackend({ url: '/genres' })
+    requestBackend({ 
+      url: '/genres',
+      baseURL: BASE_URL,
+      withCredentials: true,
+    })
       .then(response => {
         setGenres(response.data)
       })
