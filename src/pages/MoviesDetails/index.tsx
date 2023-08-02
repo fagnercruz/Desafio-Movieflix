@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { hasAnyRole } from "utils/auth";
 import { BASE_URL, requestBackend } from "utils/requests";
-import { Review } from "utils/typesUtils";
+import { Movie, Review } from "utils/typesUtils";
 
 type urlParams = {
   movieId: string;
@@ -15,8 +15,25 @@ type urlParams = {
 const MoviesDetails = () => {
   //request backend
   const { movieId } = useParams<urlParams>();
+  const [movie, setMovie] = useState<Movie>()
   const [reviews, setReviews] = useState<Review[]>([]);
 
+  // Obtem os dados do filme
+  useEffect(() => {
+    const config: AxiosRequestConfig = {
+      method: "GET",
+      baseURL: BASE_URL,
+      url: `/movies/${movieId}`,
+      withCredentials: true,
+    };
+
+    requestBackend(config).then((result) => {
+      setMovie(result.data);
+    });
+  }, [movieId]);
+
+
+  // Obtem os comentários do filme
   useEffect(() => {
     const config: AxiosRequestConfig = {
       method: "GET",
@@ -30,6 +47,8 @@ const MoviesDetails = () => {
     });
   }, [movieId]);
 
+
+
   const handleInsertReview = (review: Review) => {
     const listaAtual = [...reviews];
     listaAtual.push(review);
@@ -40,9 +59,25 @@ const MoviesDetails = () => {
   return (
     <>
       <div className="moviesd-container">
-        <div className="title-order">
-          <h2>Tela detalhes do filme {movieId}</h2>
-        </div>
+       
+          <div className="movie-details-content">
+              <div className="movie-details-image-container">
+                <img src={ movie?.imgUrl } alt={ movie?.title } className="movie-details-image" />
+              </div>
+
+              <div className="movie-details-info">
+                <h1 className="movie-details-title">{ movie?.title }</h1>
+                <span className="movie-details-year">{ movie?.year }</span>
+                <h3 className="movie-details-subtitle">{ movie?.subTitle }</h3>
+                <div className="movie-details-description-container">
+                  <p className="movie-details-description-text">
+                    { movie?.synopsis }
+                  </p>
+                </div>
+              </div>
+          </div>
+        
+
         {hasAnyRole(["ROLE_MEMBER"]) ? (
           <ReviewBoxCard
             movieId={movieId}

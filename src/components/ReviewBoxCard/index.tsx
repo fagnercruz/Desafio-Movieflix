@@ -3,6 +3,7 @@ import "./style.css";
 import { AxiosRequestConfig } from "axios";
 import { BASE_URL, requestBackend } from "utils/requests";
 import { Review } from "utils/typesUtils";
+import { toast } from "react-toastify";
 
 type Props = {
   movieId: string;
@@ -38,11 +39,13 @@ const ReviewBoxCard = ({ movieId, onInsertReview }: Props) => {
       .then((response) => {
         console.log("Salvo");
         setValue("text", "");
+        toast.success("Sua avaliação foi salva com sucesso.")
         // dispara evento que foi inserido uma nova review
         onInsertReview(response.data);
       })
       .catch((error) => {
         console.log("Erro:", error);
+        toast.error("Não foi possível salvar a sua avaliação. Tente novamente.");
       });
   };
 
