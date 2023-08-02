@@ -1,31 +1,8 @@
 .movies-container {
-    background-color: rgba(0,0,0,0.95);
-    width: 100%;
-    height: calc(100vh - 70px);
-
+    padding: 20px 0;
+    border: 1px solid orange;
     display: flex;
-    flex-direction: column;
-    padding: 12px 0 0 15px;
-}
-
-.movies-container h2 {
-    margin-bottom: 30px;
-}
-
-
-@media (min-width: 1200px){
-    
-    .movies-container {
-        padding: 40px;
-    }
-   
-    .movies-container h2 {
-        font-size: 48px;
-        margin-bottom: 50px;
-    }
-    
-
-    .movies-container p {
-        font-size: 24px;
-    }
+    flex-wrap: wrap;
+    gap:20px;
+    justify-content: center;
 }

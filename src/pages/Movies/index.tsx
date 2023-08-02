@@ -1,26 +1,61 @@
 import "./movies.css";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
+import { Genre, MovieResponse } from "utils/typesUtils";
+import { BASE_URL, requestBackend } from "utils/requests";
+import MovieCard from "./MovieCard";
+import { AxiosRequestConfig } from "axios";
+import Filter from "components/Filter";
+import Pagination from "./Pagination";
 
 
 const Movies = () => {
-
   // Essa página tem partes que serão ou não exibidas por determinados perfis e só tem acesso pessoal autenticado
-  useEffect(() => {
 
+  const [genre, setGenre] = useState<Genre>()
+  const [moviesResponse, setMoviesResponse] = useState<MovieResponse>();
+  const [activePage, setActivePage] = useState(0)
+
+
+   useEffect(() => {
+    const config: AxiosRequestConfig = {
+      method: "GET",
+      baseURL: BASE_URL,
+      url: `/movies`,
+      withCredentials: true,
+    }
+
+    requestBackend(config)
+      .then(response => {
+        console.log(response.data);
+        setMoviesResponse(response.data)
+      })
   },[]);
+
+  const handleChangeGenre = (genre: Genre) => {
+    setActivePage(0)
+    setGenre(genre)
+  }
 
   return (
     <>
-        <div className="movies-container">
-        <h2>Tela listagem de filmes</h2>
-        <Link to="/movies/1" style={{textDecoration: 'none', color: 'unset'}}>
-          <p>Acessar /movies/1</p>
-        </Link>
-        <Link to="/movies/2" style={{textDecoration: 'none', color: 'unset'}}>
-          <p>Acessar /movies/2</p>
-        </Link>
+      <div className="movies-container">
+          <Filter genre={ genre } handleChangeGenre={ handleChangeGenre } />
+       
+          {moviesResponse?.content.map(movie => (
+            <Link to={ `/movies/${movie.id}` } key={ movie.id }>
+              <MovieCard movie={ movie } />
+            </Link>
+          ))}
+       
+        {moviesResponse && (
+          <Pagination
+            totalPages={ moviesResponse.totalPages }
+            activePage={ activePage }
+            onChange={ page => setActivePage(page) }
+          />
+        )}
+        
       </div>
     </>
   );
