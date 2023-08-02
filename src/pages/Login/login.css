@@ -14,6 +14,11 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+
+    background-image: url("assets/images/cinema.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+
    
 }
 
@@ -78,8 +83,15 @@
 
 @media (min-width: 1200px){
     .login-banner {
+        width: 479px;
+        height: 573px;
+        padding: 0 50px;
         display: unset;
      }
+
+    .login-banner H2 {
+        margin-top: 50px;
+    }
 
      .login-card {
         width: 479px;

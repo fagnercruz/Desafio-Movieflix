@@ -8,7 +8,7 @@ type Props = {
 
 const ReviewItem = ({ review }: Props) => {
   return (
-    <div className="review-item">
+    <div className="review-item" key={review.id}>
       <div className="review-author">
         <Star /> {review.user.name}
       </div>
