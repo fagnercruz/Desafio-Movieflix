@@ -23,8 +23,8 @@
 }
 
 .login-card {
-    width: 298px;
-    height: 400px;
+    width: 300px;
+    height: 464px;
     padding-top: 60px;
     display: flex;
     flex-direction: column;
@@ -35,6 +35,7 @@
     margin-bottom: 40px;
     font-weight: 700;
     font-size: 2.5rem;
+    text-align: center;
 
 }
 
@@ -43,11 +44,12 @@
 }
 
 .login-card input {
-    height: 50px;
+    height: 47px;
+    width: 265px;
 }
 
 .login-card input:nth-last-child(2) {
-    margin-bottom: 54px;
+   margin-bottom: 54px;
 }
 
 .login-card button {
@@ -79,6 +81,34 @@
 }
 .bannerImg-container {
     height: 265px;
+}
+
+@media (min-width: 576px){
+    .login-container {
+        width: 100%;
+    }
+
+    .login-card {
+        width: 479px;
+        
+    }
+
+    .login-card input {
+        height: 47px;
+        width: 384px;
+    }
+
+    .login-card form {
+        width: auto;
+    }
+
+    .login-card input:nth-last-child(2) {
+        margin-bottom: 0px;
+    }
+
+    .login-card button {
+        margin-top: 74px;
+    }
 }
 
 @media (min-width: 1200px){

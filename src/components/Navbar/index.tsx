@@ -47,12 +47,12 @@ const Navbar = () => {
       </div>
       <div className="logout-area-container">
         {authContextData.autenticado ? 
-          <>
+          <div className="navbar-area-loginInfo">
             <p>{getSaudacaoByHour()} {authContextData.tokenData?.user_name}</p>
             <p>[<a href="#logout" onClick={handleLogoutClick}>LOGOUT</a>]</p>
-          </>
+          </div>
         :
-          <p>Olá, visitante !</p>
+          <p className="greetings">Olá, visitante !</p>
         }
       </div>
     </nav>

@@ -4,6 +4,8 @@
     padding: 0px;
     /* Para um background com transparência linear*/
     background-image: linear-gradient(to right, rgba(252,211,27,1), rgba(13,17,23,1));
+    display: flex;
+    align-content: center;
     
 }
 
@@ -15,6 +17,7 @@
 .navLogo h4 {
     font-size: 24px;
     font-weight: 700;
+    margin: 0px;
 }
 
 .main-menu{
@@ -46,4 +49,8 @@
 
 .logout-area-container p {
     margin: 0px;
+}
+
+.greetings {
+    display: none;
 }
