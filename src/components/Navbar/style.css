@@ -1,11 +1,12 @@
 .main-nav{
     min-height: 70px;
-    width: 100vw;
+   
     padding: 0px;
     /* Para um background com transparência linear*/
     background-image: linear-gradient(to right, rgba(252,211,27,1), rgba(13,17,23,1));
     display: flex;
     align-content: center;
+
     
 }
 
@@ -18,6 +19,10 @@
     font-size: 24px;
     font-weight: 700;
     margin: 0px;
+}
+
+.navbar-userinfo {
+    display: none;
 }
 
 .main-menu{
@@ -45,6 +50,11 @@
     gap: 10px;
     display: flex;
     justify-content: flex-end;
+   
+}
+
+.container-fluid {
+    width: 144px;
 }
 
 .logout-area-container p {

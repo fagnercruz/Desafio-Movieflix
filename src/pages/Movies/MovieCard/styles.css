@@ -40,3 +40,15 @@
     color: var(--white);
     margin-top: 5px;
 }
+
+@media (min-width: 992px){
+    .moviecard-container {
+        width: 436px;
+    }
+}
+
+@media (min-width: 1200px){
+    .moviecard-container {
+        width: 258px;
+    }
+}

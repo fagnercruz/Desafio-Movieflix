@@ -45,22 +45,29 @@ const Movies = () => {
   return (
     <>
       <div className="movies-container">
-          <Filter genre={ genre } handleChangeGenre={ handleChangeGenre } />
-       
-          {moviesResponse?.content.map(movie => (
-            <Link to={ `/movies/${movie.id}` } key={ movie.id }>
-              <MovieCard movie={ movie } />
-            </Link>
-          ))}
-       
-        {moviesResponse && (
-          <Pagination
-            totalPages={ moviesResponse.totalPages }
-            activePage={ activePage }
-            onChange={ page => setActivePage(page) }
-          />
-        )}
-        
+          
+          <div className="movies-filter-area">
+            <Filter genre={ genre } handleChangeGenre={ handleChangeGenre } />
+          </div>
+          
+          <div className="movies-cardlist-area">
+            {moviesResponse?.content.map(movie => (
+              <Link to={ `/movies/${movie.id}` } key={ movie.id }>
+                <MovieCard movie={ movie } />
+              </Link>
+            ))}
+          </div>
+          
+          <div className="movies-pagination-area">
+              {moviesResponse && (
+                <Pagination
+                  totalPages={ moviesResponse.totalPages }
+                  activePage={ activePage }
+                  onChange={ page => setActivePage(page) }
+                />
+              )}
+          </div>
+          
       </div>
     </>
   );

@@ -40,21 +40,24 @@ const Navbar = () => {
 
   return (
     <nav className="navbar navbar-dark navbar-expand-md main-nav">
+      
       <div className="container-fluid">
         <a href="/" className="navLogo">
           <h4>MOVIEFLIX</h4>
         </a>
       </div>
+      
       <div className="logout-area-container">
         {authContextData.autenticado ? 
           <div className="navbar-area-loginInfo">
-            <p>{getSaudacaoByHour()} {authContextData.tokenData?.user_name}</p>
+            <p className="navbar-userinfo">{getSaudacaoByHour()} {authContextData.tokenData?.user_name}</p>
             <p>[<a href="#logout" onClick={handleLogoutClick}>LOGOUT</a>]</p>
           </div>
         :
           <p className="greetings">Olá, visitante !</p>
         }
       </div>
+      
     </nav>
   );
 };

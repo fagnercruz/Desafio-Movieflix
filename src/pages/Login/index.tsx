@@ -46,6 +46,7 @@ const Login = () => {
   return (
     <>
       <div className="login-container">
+       
         <div className="login-banner efeito-glass bordas-arredondadas">
           <h2>Avalie Filmes</h2>
           <p>Diga o que você achou do seu filme favorito</p>
