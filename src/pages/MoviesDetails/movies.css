@@ -8,6 +8,64 @@
     padding: 12px 15px 0 15px;
 }
 
+.movie-details-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(36, 36, 36);
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.movie-details-title {
+    margin-top: 18px;
+    font-size: 20px;
+    margin-bottom: 0px;
+    color: #fff;
+}
+.movie-details-year {
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFC700;
+}
+.movie-details-subtitle{
+    font-size: 14px;
+    font-weight: 400;
+
+}
+
+.movie-details-description-container {
+    border: 1px solid #555454;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 16px;
+}
+
+
+.movie-details-image-container img{
+    width: 260px;
+}
+
+@media (min-width: 576px){
+    .movie-details-image-container img{
+        width: 496px;
+    }
+}
+
+@media (min-width: 768px){
+    .movie-details-image-container img{
+        width: 608px;
+    }
+
+    .movie-details-content {
+        padding: 40px;
+    }
+
+    .moviesd-container {
+        padding: 40px;
+    }
+}
+
 @media (min-width: 1200px){
     .title-order {
         display: flex;

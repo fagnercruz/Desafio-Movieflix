@@ -10,7 +10,7 @@ const ReviewList = ({ reviews }: Props) => {
   return (
     <div className="reviewList-Container">
       {reviews.map((review) => {
-        return <ReviewItem review={review} />;
+        return <ReviewItem review={review} key={review.id} />;
       })}
     </div>
   );

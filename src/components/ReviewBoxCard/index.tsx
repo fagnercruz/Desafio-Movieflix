@@ -60,7 +60,7 @@ const ReviewBoxCard = ({ movieId, onInsertReview }: Props) => {
           className="form-control"
         />
         <div>{errors.text?.message}</div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary botao-salvar">
           SALVAR AVALIACAO
         </button>
       </form>

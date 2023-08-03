@@ -66,14 +66,14 @@ const MoviesDetails = () => {
               </div>
 
               <div className="movie-details-info">
-                <h1 className="movie-details-title">{ movie?.title }</h1>
-                <span className="movie-details-year">{ movie?.year }</span>
-                <h3 className="movie-details-subtitle">{ movie?.subTitle }</h3>
-                <div className="movie-details-description-container">
-                  <p className="movie-details-description-text">
-                    { movie?.synopsis }
-                  </p>
-                </div>
+                  <h1 className="movie-details-title">{ movie?.title }</h1>
+                  <span className="movie-details-year">{ movie?.year }</span>
+                  <h3 className="movie-details-subtitle">{ movie?.subTitle }</h3>
+                  <div className="movie-details-description-container">
+                    <p className="movie-details-description-text">
+                      { movie?.synopsis }
+                    </p>
+                  </div>
               </div>
           </div>
         
